@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/jszwedko/test-ci-integration.svg?branch=master)](https://travis-ci.org/jszwedko/test-ci-integration)
 
 CONTENTS OF THIS FILE
 ---------------------
