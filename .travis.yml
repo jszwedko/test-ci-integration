@@ -3,10 +3,9 @@ php:
 - '7.0'
 env:
   - secure: "Zj0PWjNnZl8iDcKDG9cn1570wlAM/PpWQBd/ivfDzX1z82+y20lx2UNR1x5XIuTAilUcH0yU4x+Nmg5pizJkEyzereuuRwDHccuCXOgIvKrJYWUqj0N0B5u+tQG2eUccWT1KVXnO5d0qqcXNhBA3jg5Fdt6j7faUtGzHHesYQOqhV2Q+f4FVSFQQxPvOHmS6TvyjvbllHWSY8yOc6mHgzayx33E+ZyINGLliUv7FjmEX1adOl8aGXJnsBOZ6kbMXw1UMEBCyYqwUh6txP1XWnVmBhiVVqUfCVtNzl0k4wf6WifJJnpAmEfwKIlelMYybRD3W8MwN/7EigTIjQI346MzpbwVPSQFjQDeAuR9bXKqA93kGxPY6xO/KMXmnMits0HkifO58yB2pyIXz1syosjNgAEHXiPwvDj6wzzm/TGa+hzC2J04jCERI5SKiLx6RogcncYGU+YrxfyIrSy7RyumLJ5Gmd4Iho70DiZoSCxggHIndvK81evd2d3efUEPzp/05eqSb4F+eP47YE8ehajd0REhZQPrhqolcPclu+T7XW+nVaEkQzlYEIeRk3fSm98qojWil8XuTBhFsMUlMeMSNmJvmgrydAgnviZHAN6qTyTwr9gFZwZonS+0y0pKETNb9YLkLVKibUsDSoM1evq1w45VHwPG3AqNYWbm2meA="
-
 script:
 - true
-pre_deploy:
+before_deploy:
 - git remote add pantheon $PANTHEON_REMOTE
 deploy:
 - if [ $TRAVIS_BRANCH == 'master' ] && [ $TRAVIS_PULL_REQUEST == 'false' ]; then git
