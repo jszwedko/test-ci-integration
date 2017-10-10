@@ -10,6 +10,7 @@ script:
 - true
 before_deploy:
 - git remote add pantheon $PANTHEON_REMOTE
+- git remote add github git@github.com:$TRAVIS_REPO_SLUG
 
 # TODO: currrently vulnerable to MITM, could hardcode host keys in here
 - ssh-keyscan github.com >> $HOME/.ssh/known_hosts
@@ -19,6 +20,6 @@ before_deploy:
 - chmod 0600 $HOME/.ssh/id_rsa
 deploy:
 - provider: script
-  script: git fetch pantheon && git merge -m "Merge changes from pantheon into github" pantheon/master && git push origin HEAD:master && git push pantheon HEAD:master
+  script: git fetch pantheon && git merge -m "Merge changes from pantheon into github" pantheon/master && git push github HEAD:master && git push pantheon HEAD:master
   on:
     branch: master
