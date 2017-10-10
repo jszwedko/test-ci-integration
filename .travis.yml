@@ -9,6 +9,8 @@ env:
 script:
 - true
 before_deploy:
+- ssh-add -l
+- ls -la ~/.ssh
 - git remote add pantheon $PANTHEON_REMOTE
 # TODO: currrently vulnerable to MITM, could hardcode host keys in here
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
