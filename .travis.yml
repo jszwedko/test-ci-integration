@@ -9,12 +9,13 @@ env:
 script:
 - true
 before_deploy:
-- ls -la ~/.ssh
-- cat ~/.ssh/*.pub
 - git remote add pantheon $PANTHEON_REMOTE
+
 # TODO: currrently vulnerable to MITM, could hardcode host keys in here
 - ssh-keyscan github.com >> ~/.ssh/known_hosts
 - ssh-keyscan -p $PANTHEON_PORT $PANTHEON_HOST >> ~/.ssh/known_hosts
+
+- openssl aes-256-cbc -K $encrypted_a212912bf46c_key -iv $encrypted_a212912bf46c_iv -in test-ci-integration.enc -out ~\/.ssh/id_rsa -d
 deploy:
 - provider: script
   script: git fetch pantheon && git merge -m "Merge changes from pantheon into github" pantheon/master && git push origin HEAD:master && git push pantheon HEAD:master
