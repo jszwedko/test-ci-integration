@@ -8,6 +8,7 @@ script:
 before_deploy:
 - git remote add pantheon $PANTHEON_REMOTE
 deploy:
-- if [ $TRAVIS_BRANCH == 'master' ] && [ $TRAVIS_PULL_REQUEST == 'false' ]; then git
-  fetch pantheon && git merge -m "Merge changes from pantheon into github" pantheon/master
-  && git push origin HEAD:master && git push pantheon HEAD:master ; fi
+- provider: script
+  script: git fetch pantheon && git merge -m "Merge changes from pantheon into github" pantheon/master && git push origin HEAD:master && git push pantheon HEAD:master
+  on:
+    branch: master
